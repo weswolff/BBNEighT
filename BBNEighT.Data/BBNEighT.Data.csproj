@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\202010290024425_Room Data Created.cs" />
     <Compile Include="Migrations\202010290024425_Room Data Created.Designer.cs">
