@@ -35,7 +35,7 @@ namespace BBNEighT.Data
         }
 
         public DbSet<Room> Rooms { get; set; }
-        public DbSet<Room> Categories { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
