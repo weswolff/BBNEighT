@@ -84,6 +84,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OwnerModel\OwnerDetail.cs" />
+    <Compile Include="OwnerModel\OwnerListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoomModels\RoomCreate.cs" />
     <Compile Include="RoomModels\RoomDetail.cs" />

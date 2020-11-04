@@ -85,9 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202010290024425_Room Data Created.cs" />
-    <Compile Include="Migrations\202010290024425_Room Data Created.Designer.cs">
-      <DependentUpon>202010290024425_Room Data Created.cs</DependentUpon>
+    <Compile Include="Migrations\202011042151071_firstMigration.cs" />
+    <Compile Include="Migrations\202011042151071_firstMigration.Designer.cs">
+      <DependentUpon>202011042151071_firstMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,8 +98,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202010290024425_Room Data Created.resx">
-      <DependentUpon>202010290024425_Room Data Created.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011042151071_firstMigration.resx">
+      <DependentUpon>202011042151071_firstMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
