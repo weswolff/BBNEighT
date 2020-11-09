@@ -94,6 +94,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OwnerModel\OwnerDetail.cs" />
+    <Compile Include="OwnerModel\OwnerEdit.cs" />
+    <Compile Include="OwnerModel\OwnerList.cs" />
+    <Compile Include="OwnerModel\OwnerListItem.cs" />
 
     <Compile Include="ItemModels\ItemCreate.cs" />
     <Compile Include="ItemModels\ItemDetail.cs" />

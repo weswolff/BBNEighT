@@ -12,7 +12,7 @@ namespace BBNEighT.Data.RoomData
         [Key]
         public int RoomID { get; set; }
         [Required]
-        public Guid OwnerID { get; set; }
+        public Guid OwnerId { get; set; }
         [Required]
         [MaxLength(50, ErrorMessage = "There are too many characters in this field." )]
         public string RoomName { get; set; }
