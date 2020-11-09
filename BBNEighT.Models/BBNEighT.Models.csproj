@@ -85,6 +85,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OwnerModel\OwnerDetail.cs" />
+    <Compile Include="OwnerModel\OwnerEdit.cs" />
+    <Compile Include="OwnerModel\OwnerList.cs" />
     <Compile Include="OwnerModel\OwnerListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoomModels\RoomCreate.cs" />
@@ -96,6 +98,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BBNEighT.Data\BBNEighT.Data.csproj">
+      <Project>{fc95fb72-2762-4119-b924-b9a3c9276aed}</Project>
+      <Name>BBNEighT.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

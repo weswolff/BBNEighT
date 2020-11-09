@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BBNEighT.Models.Owner
+namespace BBNEighT.Models.OwnerModel
 {
-    public class OwnerListItem
+    public class OwnerEdit
     {
         public string Id { get; set; }
 
@@ -16,9 +16,6 @@ namespace BBNEighT.Models.Owner
 
         public string Email { get; set; }
 
-        public DateTimeOffset DateCreated { get; set; }
-
-        
-
+        public DateTimeOffset DateCreated { get; set;}
     }
 }

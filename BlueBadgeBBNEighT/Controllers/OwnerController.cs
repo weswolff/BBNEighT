@@ -14,19 +14,19 @@ namespace BlueBadgeBBNEighT.Controllers
     {
         private OwnerService CreateOwnerService()
         {
-            var userId = User.Identity.GetUserId();
+            var userId = Guid.Parse(User.Identity.GetUserId());
             var ownerService = new OwnerService(userId);
             return ownerService;
         }
 
-        public IHttpActionResult Get()
+        public IHttpActionResult GetAllOwners()
         {
             OwnerService ownerService = CreateOwnerService();
             var owners = ownerService.GetOwners();
             return Ok(owners);
         }
 
-        public IHttpActionResult Get(string id)
+        public IHttpActionResult GetOwner(Guid id)
         {
             OwnerService ownerService = CreateOwnerService();
             var owner = ownerService.GetOwnerById(id);
@@ -34,19 +34,27 @@ namespace BlueBadgeBBNEighT.Controllers
 
         }
 
-      
+        public IHttpActionResult DeleteOwner(Guid ownerId)
+        {
+            var service = CreateOwnerService();
+
+            if (!service.DeleteOwner(ownerId))
+                return InternalServerError();
+            return Ok();
+        }
+
 
 
 
         //POST USES OWNER CREATE Which we did not create since we are using ApplicationUser
-       // public IHttpActionResult Post(OwnerCreate owner)
-       // {
-       //     if (!ModelState.IsValid)
-       //         return BadRequest(ModelState);
-       //     var service CreateOwnerService();
-       //         return InternalServerError();
-       //    return Ok();
-       // }
+        // public IHttpActionResult Post(OwnerCreate owner)
+        // {
+        //     if (!ModelState.IsValid)
+        //         return BadRequest(ModelState);
+        //     var service CreateOwnerService();
+        //         return InternalServerError();
+        //    return Ok();
+        // }
 
 
     }

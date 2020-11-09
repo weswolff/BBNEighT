@@ -1,5 +1,6 @@
 ﻿using BBNEighT.Data;
 using BBNEighT.Models.Owner;
+using BBNEighT.Models.OwnerModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +11,35 @@ namespace BBNeighT.Services.Owner
 {
     public class OwnerService
     {
-        private readonly String _userId; 
+        private readonly Guid  _userId; 
 
-        public OwnerService(String userId)
+        public OwnerService(Guid userId)
         {
             _userId = userId;
         }
 
         //CRUD  
+
         //CREATE is handled by ApplicationUser (asp.net)
+        //Coded for possible future use --Not Tested
+        /*
+            public bool CreateOwner(OwnerCreate model)
+            {
+                var entity =
+                    new Owner()
+                    {
+                        OwnerId = _userId,
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        Email = model.Email,
+                        DateCreated = model.DateCreated
+                    };
+                using (var ctx = new ApplicationDbContext())
+                {
+                    ctx.Owners.Add(entity);
+                    return ctx.SaveChanges() == 1;
+                }
+            }*/
 
         //READ: GetOwners
         public IEnumerable<OwnerListItem> GetOwners()
@@ -28,39 +49,70 @@ namespace BBNeighT.Services.Owner
                 var query =
                     ctx
                        .Users
-                       .Where(e => e.Id == _userId)
                        .Select(
                             e =>
                                 new OwnerListItem
                                 {
+                                    Id = e.Id,
                                     FirstName = e.FirstName,
                                     LastName = e.LastName,
+                                    Email = e.Email,
                                     DateCreated = e.DateCreated
                                 }
-                      );
+                      ); ; 
                 return query.ToArray();
 
             }
         }
 
         //Read: GetOwnerById
-        public OwnerDetail GetOwnerById(string id)
+        public OwnerDetail GetOwnerById(Guid userId)
         {
             using (var ctx= new ApplicationDbContext())
             {
                 var entity=
                     ctx
                         .Users
-                        .Single(e => e.Id == _userId);
+                        .Single(e => e.Id == _userId.ToString());
                 return
                 new OwnerDetail
                 {
-                    Id = entity.Id,
+                    Id = Guid.Parse(entity.Id),
                     FirstName = entity.FirstName,
                     LastName = entity.LastName,
+                    Email = entity.Email,
                     DateCreated = entity.DateCreated,
-                 };
-                                     
+                 };               
+            }
+        }
+
+        public bool UpdateOwner(OwnerEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Users
+                        .Single(e => e.Id == _userId.ToString());
+                entity.FirstName = model.FirstName;
+                entity.LastName = model.LastName;
+                entity.Email = model.Email;
+
+                return ctx.SaveChanges() == 1;          
+            }
+        }
+
+        public bool DeleteOwner(Guid Id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Users
+                        .Single(e => e.Id == _userId.ToString());
+                ctx.Users.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
             }
         }
 
