@@ -62,6 +62,7 @@ namespace BlueBadgeBBNEighT.Controllers
             return new UserInfoViewModel
             {
                 Email = User.Identity.GetUserName(),
+            
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
@@ -329,7 +330,7 @@ namespace BlueBadgeBBNEighT.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName=model.LastName, DateCreated=model.DateCreated };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
