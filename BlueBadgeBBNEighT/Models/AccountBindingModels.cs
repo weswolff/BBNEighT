@@ -46,7 +46,6 @@ namespace BlueBadgeBBNEighT.Models
         [Display(Name = "LastName")]
         public string LastName { get; set; }
 
-        //[Required]
         public DateTimeOffset DateCreated { get; set; } = DateTimeOffset.UtcNow;
 
         [Required]

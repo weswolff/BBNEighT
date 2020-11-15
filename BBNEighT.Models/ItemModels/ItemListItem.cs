@@ -17,6 +17,7 @@ namespace BBNEighT.Models.Item
         public string Room { get; set; }
         public string Description { get; set; }
         public decimal Value { get; set; }
+        [Display(Name = "Purchase Date YYYY/MM/DD")]
         public DateTime AquiredDate { get; set; }
         public DateTimeOffset CreatedUtc { get; set; }
     }
