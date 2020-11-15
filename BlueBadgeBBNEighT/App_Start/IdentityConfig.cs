@@ -6,8 +6,7 @@ using Microsoft.Owin;
 using BlueBadgeBBNEighT.Models;
 using BBNEighT.Data;
 
-namespace BlueBadgeBBNEighT
-{
+//namespace BlueBadgeBBNEighT
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
 
     public class ApplicationUserManager : UserManager<ApplicationUser>
@@ -43,4 +42,4 @@ namespace BlueBadgeBBNEighT
             return manager;
         }
     }
-}
+

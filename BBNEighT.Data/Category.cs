@@ -15,8 +15,10 @@ namespace BBNEighT.Data
         [Required]
         public string CategoryName { get; set; }
 
-        //[ForeignKey(nameof(OwnerID))]
-        //public Guid OwnerID { get; set; }
-        //public virtual ApplicationUser OwnerGuid { get; set; }
+        [Display(Name = "Date Created")]
+        public DateTimeOffset CreatedUtc { get; set; } = DateTimeOffset.UtcNow;
+
+        [Display(Name = "Date Modified")]
+        public DateTimeOffset? ModifiedUtc { get; set; }
     }
 }
