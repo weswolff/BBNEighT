@@ -12,7 +12,9 @@ namespace BBNEighT.Models
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }
 
-        [Display(Name = "Created")]
-        public DateTimeOffset CreatedUtc { get; set; }
+        [Display(Name = "Date Created")]
+        public DateTimeOffset CreatedUtc { get; set; } = DateTimeOffset.UtcNow;
+        [Display(Name = "Date Modified")]
+        public DateTimeOffset? ModifiedUtc { get; set; }
     }
 }

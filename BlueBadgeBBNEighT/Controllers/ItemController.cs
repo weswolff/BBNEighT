@@ -45,13 +45,13 @@ namespace BlueBadgeBBNEighT.Controllers
             return Ok(item);
         }
 
-        public IHttpActionResult Put(ItemEdit item)
+        public IHttpActionResult Put(int id,ItemEdit item)//Item Mod
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateItemService();
-
+            item.ItemID = id;// Item
             if (!service.UpdateItem(item))
                 return InternalServerError();
 

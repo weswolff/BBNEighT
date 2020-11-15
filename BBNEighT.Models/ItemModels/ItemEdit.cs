@@ -17,6 +17,6 @@ namespace BBNEighT.Models.Item
         public string Description { get; set; }
         public decimal Value { get; set; }
         public DateTime AquiredDate { get; set; }
-        public DateTimeOffset CreatedUtc { get; set; }
+   
     }
 }
