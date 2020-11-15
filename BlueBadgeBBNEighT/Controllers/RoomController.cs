@@ -36,11 +36,11 @@ namespace BlueBadgeBBNEighT.Controllers
                 return InternalServerError();
             return Ok();
         }
-        public IHttpActionResult GetRoom(string roomName)
+        public IHttpActionResult GetRoom(int id)
         {
             RoomService roomService = CreateRoomService();
-            var room = roomService.GetRoomByName(roomName);
-            return Ok(roomName);
+            var room = roomService.GetRoomById(id);
+            return Ok(id);
         }
 
         public IHttpActionResult PutRoom(RoomEdit room)
@@ -57,11 +57,11 @@ namespace BlueBadgeBBNEighT.Controllers
 
         }
 
-        public IHttpActionResult DeleteRoom(string roomName)
+        public IHttpActionResult DeleteRoom(int id)
         {
             var service = CreateRoomService();
 
-            if (!service.DeleteRoom(roomName))
+            if (!service.DeleteRoom(id))
                 return InternalServerError();
             return Ok();
         }
