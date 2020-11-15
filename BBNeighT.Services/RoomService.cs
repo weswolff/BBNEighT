@@ -52,14 +52,14 @@ namespace BBNeighT.Services.RoomService
                 return query.ToArray();
             }
         }
-        public RoomDetail GetRoomByName(string roomName)
+        public RoomDetail GetRoomById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Rooms
-                        .Single(e => e.RoomName == roomName && e.OwnerId == _userId);
+                        .Single(e => e.RoomID == id && e.OwnerId == _userId);
                 return
                     new RoomDetail
                     {
@@ -86,14 +86,14 @@ namespace BBNeighT.Services.RoomService
             }
         }
 
-        public bool DeleteRoom(string roomName)
+        public bool DeleteRoom(int roomID)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = 
                     ctx
                         .Rooms
-                        .Single(e => e.RoomName == roomName && e.OwnerId == _userId);
+                        .Single(e => e.RoomID == roomID && e.OwnerId == _userId);
                 ctx.Rooms.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
