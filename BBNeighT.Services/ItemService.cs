@@ -21,9 +21,9 @@ namespace BBNeighT.Services
             var entity =
                 new Item()
                 {
-                    OwnerID = _userId,     
-                    ItemName = model.ItemName, 
-                    CategoryID = model.CategoryID,          
+                    OwnerID = _userId,
+                    ItemName = model.ItemName,
+                    CategoryID = model.CategoryID,
                     RoomID = model.RoomID,        
                     Description = model.Description,
                     Value = model.Value,
@@ -47,10 +47,13 @@ namespace BBNeighT.Services
                         .Select(
                             e =>
                                 new ItemListItem
-                                {                             
+                                {
+                                    ItemID = e.ItemID,
                                     ItemName = e.ItemName,
                                     CategoryID = e.CategoryID,
+                                    Category = e.Category.CategoryName,
                                     RoomID = e.RoomID,
+                                    Room =e.Room.RoomName,
                                     Description = e.Description,
                                     Value = e.Value,
                                     AquiredDate = e.AquiredDate,
@@ -75,7 +78,9 @@ namespace BBNeighT.Services
                         ItemID = entity.ItemID,
                         ItemName = entity.ItemName,
                         CategoryID = entity.CategoryID,
+                        Category = entity.Category.CategoryName,
                         RoomID = entity.RoomID,
+                        Room = entity.Room.RoomName,
                         Description = entity.Description,
                         AquiredDate = entity.AquiredDate,
                         CreatedUtc = entity.CreatedUtc,
@@ -91,8 +96,7 @@ namespace BBNeighT.Services
                     ctx
                         .Items
                         .Single(e => e.ItemID == model.ItemID && e.OwnerID == _userId);
-
-
+                               
                 entity.ItemName = model.ItemName;
                 entity.CategoryID = model.CategoryID;
                 entity.RoomID = model.RoomID;
