@@ -21,6 +21,7 @@ namespace BBNEighT.Models.Item
         [MaxLength(8000)]
         public string Description { get; set; }
         public decimal Value { get; set; }
+        [Display(Name = "Purchase Date YYYY/MM/DD")]
         public DateTime AquiredDate { get; set; }
     }
 }
