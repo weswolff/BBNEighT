@@ -18,7 +18,7 @@ namespace BBNEighT.Data
 
         public string LastName { get; set; }
 
-        public DateTimeOffset DateCreated { get; set; }
+        public DateTimeOffset DateCreated { get; set; } = DateTime.UtcNow;
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
