@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
@@ -10,9 +11,15 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace BBNEighT.Data
 {
-    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
+    //You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public DateTimeOffset DateCreated { get; set; } = DateTimeOffset.UtcNow;
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -36,6 +43,7 @@ namespace BBNEighT.Data
 
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Item> Items { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

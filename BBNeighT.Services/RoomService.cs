@@ -10,11 +10,11 @@ namespace BBNeighT.Services.RoomService
 {
     public class RoomService
     {
-        private readonly Guid _userID;
+        private readonly Guid _userId;
 
-        public RoomService(Guid userID)
+        public RoomService(Guid userId)
         {
-            _userID = userID;
+            _userId = userId;
         }
 
         public bool CreateRoom(RoomCreate model)
@@ -22,7 +22,7 @@ namespace BBNeighT.Services.RoomService
             var entity =
                 new Room()
                 {
-                    OwnerID = _userID,
+                    OwnerId = _userId,
                     RoomName = model.RoomName,
                     RoomDescription = model.RoomDescription
                 };
@@ -39,7 +39,7 @@ namespace BBNeighT.Services.RoomService
                 var query =
                     ctx
                         .Rooms
-                        .Where(e => e.OwnerID == _userID)
+                        .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
                                 new RoomList
@@ -52,14 +52,14 @@ namespace BBNeighT.Services.RoomService
                 return query.ToArray();
             }
         }
-        public RoomDetail GetRoomByName(string roomName)
+        public RoomDetail GetRoomById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Rooms
-                        .Single(e => e.RoomName == roomName && e.OwnerID == _userID);
+                        .Single(e => e.RoomID == id && e.OwnerId == _userId);
                 return
                     new RoomDetail
                     {
@@ -76,7 +76,7 @@ namespace BBNeighT.Services.RoomService
                 var entity =
                     ctx
                         .Rooms
-                        .Single(e => e.RoomID == model.RoomID && e.OwnerID == _userID);
+                        .Single(e => e.RoomID == model.RoomID && e.OwnerId == _userId);
                 
                 entity.RoomID = model.RoomID;
                 entity.RoomName = model.RoomName;
@@ -86,14 +86,14 @@ namespace BBNeighT.Services.RoomService
             }
         }
 
-        public bool DeleteRoom(string roomName)
+        public bool DeleteRoom(int roomID)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = 
                     ctx
                         .Rooms
-                        .Single(e => e.RoomName == roomName && e.OwnerID == _userID);
+                        .Single(e => e.RoomID == roomID && e.OwnerId == _userId);
                 ctx.Rooms.Remove(entity);
 
                 return ctx.SaveChanges() == 1;

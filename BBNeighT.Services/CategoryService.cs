@@ -10,9 +10,9 @@ namespace BBNeighT.Services
 {
     public class CategoryService
     {
-        private readonly Guid _userID;
+        private readonly string _userID;
 
-        public CategoryService(Guid userID)
+        public CategoryService(string userID)
         {
             _userID = userID;
         }
@@ -46,6 +46,8 @@ namespace BBNeighT.Services
                                 {
                                     CategoryName = e.CategoryName,
                                     CategoryID = e.CategoryID,
+                                    CreatedUtc = e.CreatedUtc,
+                                    ModifiedUtc = e.ModifiedUtc,
                                 }
                         );
 
@@ -65,6 +67,8 @@ namespace BBNeighT.Services
                     {
                         CategoryID = entity.CategoryID,
                         CategoryName = entity.CategoryName,
+                        ModifiedUtc = entity.ModifiedUtc,
+                        CreatedUtc = entity.CreatedUtc,
                     };
             }
         }
@@ -78,6 +82,7 @@ namespace BBNeighT.Services
                         .Single(e => e.CategoryID == model.CategoryID/* && e.OwnerID == _userID*/);
 
                 entity.CategoryName = model.CategoryName;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
                 return ctx.SaveChanges() == 1;
             }
