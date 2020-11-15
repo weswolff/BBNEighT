@@ -32,7 +32,7 @@ namespace BlueBadgeBBNEighT.Controllers
         }
         private CategoryService CreateCategoryService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
+            var userId = User.Identity.GetUserId();
             var categoryService = new CategoryService(userId);
             return categoryService;
         }
