@@ -33,7 +33,7 @@ namespace BBNeighT.Services
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Items.Add(entity);
-                return ctx.SaveChanges() == 1;        
+                return ctx.SaveChanges() == 1;
             }
         }
         public IEnumerable<ItemListItem> GetItems()
