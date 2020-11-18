@@ -40,7 +40,7 @@ namespace BlueBadgeBBNEighT.Controllers
         {
             RoomService roomService = CreateRoomService();
             var room = roomService.GetRoomById(id);
-            return Ok(id);
+            return Ok(room);
         }
 
         public IHttpActionResult PutRoom(RoomEdit room)
